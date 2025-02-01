@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manifesto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #000;
+            color: #0f0;
+            padding: 20px;
+        }
+        #content {
+            display: none;
+            margin-top: 50px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("password").value;
+            var correctPassword = "GOODLUCK"; // Sostituisci con la tua password segreta
+            if (password.toUpperCase() === correctPassword) {
+                document.getElementById("content").style.display = "block";
+                document.getElementById("passwordForm").style.display = "none";
+            } else {
+                alert("Access Denied. Try again.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Enter the Password</h1>
+    <div id="passwordForm">
+        <input type="text" id="password" placeholder="Enter password">
+        <button onclick="checkPassword()">Submit</button>
+    </div>
+    <div id="content">
+        <h2>Welcome to the Next Level</h2>
+        <p>
+            You have made it this far. Only the most **perceptive** individuals have reached this point. 
+            This is just the beginning.
+        </p>
+        <p>
+            A new world awaits. Your journey has just begun. 
+            This password will unlock something **exclusive** soon.
+        </p>
+        <p>
+            Stay alert. More clues will be revealed.
+        </p>
+    </div>
+</body>
+</html>
