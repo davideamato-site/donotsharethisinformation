@@ -8,9 +8,11 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #000;
-            color: #0f0;
+            background-color: #fff;
+            color: #000;
             padding: 20px;
+            position: relative;
+            overflow: hidden;
         }
         #content {
             display: none;
@@ -20,11 +22,40 @@
             padding: 10px;
             font-size: 16px;
             margin-top: 20px;
+            border: 2px solid #333;
+            border-radius: 5px;
         }
         button {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+            background-color: #444;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+        }
+        .ascii-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            white-space: pre-wrap;
+            font-size: 12px;
+            color: #ccc;
+            overflow: hidden;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        @keyframes moveText {
+            from { transform: translateY(0); }
+            to { transform: translateY(-100%); }
+        }
+        .ascii-container {
+            position: absolute;
+            width: 100%;
+            height: 200%;
+            animation: moveText 10s linear infinite;
         }
     </style>
     <script>
@@ -38,9 +69,22 @@
                 alert("Access Denied. Try again.");
             }
         }
+        function generateASCII() {
+            let asciiArt = "";
+            let chars = "@#$%&*+=-~";
+            for (let i = 0; i < 450 * 30; i++) {
+                asciiArt += chars[Math.floor(Math.random() * chars.length)];
+                if (i % 450 === 0) asciiArt += "\n";
+            }
+            document.querySelector(".ascii-container").innerText = asciiArt;
+        }
+        window.onload = generateASCII;
     </script>
 </head>
 <body>
+    <div class="ascii-background">
+        <div class="ascii-container"></div>
+    </div>
     <h1>Enter the Password</h1>
     <div id="passwordForm">
         <input type="text" id="password" placeholder="Enter password">
